@@ -1,0 +1,73 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #222;
+  color: #fff;
+}
+
+body,
+input,
+button {
+  font-family: "Courier New", Courier, monospace;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2 rem;
+  margin-left: 1rem;
+}
+
+.input,
+.btn {
+  padding: 1rem 1.2rem;
+  background-color: #0e1a0c;
+  outline: none;
+  border: none;
+  color: #fff;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: rgb(12, 50, 202);
+}
+
+.input::placeholder {
+  color: #fff;
+}
+
+.add-quote-form {
+  display: flex;
+  column-gap: 1rem;
+  margin: 1rem;
+}
+
+.random-quote,
+.all-quotes {
+  margin-left: 1rem;
+}
+
+.random-quote {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.random-quote h1 {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.quote-card {
+  margin-top: 1rem;
+  background-color: rgb(30, 30, 30);
+}
+
+.quote-card .quote-line {
+  padding: 0.5rem;
+}

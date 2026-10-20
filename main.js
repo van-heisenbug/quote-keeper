@@ -1,29 +1,24 @@
 // # IIFE
 const QuoteDB = (() => {
-  const quoteRecord = JSON.parse(localStorage.getItem("QUOTE")) || [];
+  let quoteRecord = JSON.parse(localStorage.getItem("QUOTES")) || [];
 
   const getAllQuotes = () => {
     return structuredClone(quoteRecord);
   };
 
   // # Returns the randomized quote selected.
-  const readQuote = () => {
+  const getRandomQuote = () => {
     const index = randomizeIndex(quoteRecord);
 
     return quoteRecord[index]; // String
   };
 
-  const addQuoute = (newQuote, author = "NA", source = "NA") => {
+  const addNewQuote = (newQuote, author = "NA", source = "NA") => {
     if (typeof newQuote !== "string") {
       throw new TypeError(`${newQuote} is not a string.`);
     }
 
-    let uniqueId = createRandomId();
-
-    if (checkCollision(uniqueId)) {
-      // If there is a match in the record.
-      uniqueId = createRandomId();
-    }
+    let uniqueId = enforceUniqueId();
 
     const quoteEntry = {
       id: uniqueId,
@@ -33,8 +28,8 @@ const QuoteDB = (() => {
       source: source,
     };
 
-    quoteRecord.push(quoteEntry);
-    saveQuoteRecord();
+    quoteRecord.push(quoteEntry); // # In Memory
+    saveQuoteRecord(); // # local storage and Google Sheet.
   };
 
   const editQuote = (quoteId, newQuote, author = "NA", source = "NA") => {
@@ -54,16 +49,17 @@ const QuoteDB = (() => {
     quoteEntry.author = author;
     quoteEntry.source = source;
 
-    quoteRecord.splice(quoteIndex, 1, quoteEntry);
-    saveQuoteRecord();
+    quoteRecord.splice(quoteIndex, 1, quoteEntry); // # Alter in memory.
+    saveQuoteRecord(); // # Save to local storage and Google Sheet.
   };
 
   // # Saves to localStorage first
   // then back up to Google Sheet.
   const saveQuoteRecord = () => {
     const serializedQuote = JSON.stringify(quoteRecord);
+
     localStorage.setItem("QUOTES", serializedQuote);
-    // Back up to Google Sheet later.
+    // Back up to Google Sheet later. TODO
   };
 
   const deleteQuote = (quoteId) => {
@@ -77,8 +73,8 @@ const QuoteDB = (() => {
       throw new Error(`Quote not found`);
     }
 
-    quoteRecord.splice(quoteIndex, 1);
-    saveQuoteRecord();
+    quoteRecord.splice(quoteIndex, 1); // # Alter in memory.
+    saveQuoteRecord(); // Save new state to local storage and Google Sheet.
   };
 
   // # Private Helpers
@@ -96,7 +92,7 @@ const QuoteDB = (() => {
     return Math.floor(Math.random() * record.length);
   };
 
-  // # Random ID generator.
+  // # Random ID generator. <GOOGLED>
   const createRandomId = (length = 8) => {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -118,22 +114,21 @@ const QuoteDB = (() => {
   };
 
   // # Checks for collision.
-  const checkCollision = (quoteId) => {
-    return quoteRecord.some((quote) => quote.id === quoteId);
+  const enforceUniqueId = () => {
+    let id = null; // # Not sure if null is better than undefined.
+
+    do {
+      id = createRandomId(); // # Creates the id once.
+    } while (quoteRecord.some((quote) => quote.id === id)); // # If it exists, execute the do block again.
+
+    return id; // # ID that has no match on our record.
   };
 
   return {
     getAllQuotes,
-    readQuote,
-    addQuoute,
+    getRandomQuote,
+    addNewQuote,
     editQuote,
     deleteQuote,
   };
 })();
-
-QuoteDB.addQuoute("q1", "auth1", "facebook");
-QuoteDB.addQuoute("q2", "auth2", "youtube");
-QuoteDB.addQuoute("q3", "instagram");
-QuoteDB.addQuoute("q4");
-
-console.log(QuoteDB.getAllQuotes());
