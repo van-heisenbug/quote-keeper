@@ -1,134 +1,52 @@
-// # IIFE
-const QuoteDB = (() => {
-  let quoteRecord = JSON.parse(localStorage.getItem("QUOTES")) || [];
+import { DOM } from "./dom.js";
+import renderAllQuotes from "./renderAllQuotes.js";
+import showRandomQuote from "./showRandomQuote.js";
+import addNewQuote from "./addNewQuote.js";
+import { deleteAllQuotes } from "./deleteAllQuotes.js";
+import editQuote from "./editQuote.js";
+import { deleteQuote } from "./deleteQuote.js";
 
-  const getAllQuotes = () => {
-    return structuredClone(quoteRecord);
-  };
+// # On load
+DOM.allQuotes.appendChild(renderAllQuotes());
 
-  // # Returns the randomized quote selected.
-  const getRandomQuote = () => {
-    const index = randomizeIndex(quoteRecord);
+DOM.randomQuoteBTN.addEventListener("click", showRandomQuote);
+DOM.addNewQuoteBtn.addEventListener("click", addNewQuote);
+DOM.deleteAllBtn.addEventListener("click", deleteAllQuotes);
 
-    return quoteRecord[index]; // String
-  };
+DOM.allQuotes.addEventListener("click", (e) => {
+  const btnClicked = e.target.closest("button");
+  if (!btnClicked) {
+    return;
+  }
 
-  const addNewQuote = (newQuote, author = "NA", source = "NA") => {
-    if (typeof newQuote !== "string") {
-      throw new TypeError(`${newQuote} is not a string.`);
-    }
+  if (btnClicked.id === "edit") {
+    const card = e.target.closest(".quote-card");
+    const quoteLine = card.querySelector(".quote-line");
 
-    let uniqueId = enforceUniqueId();
+    DOM.quoteIdInput.value = quoteLine.id;
+    DOM.editQuoteInput.value = quoteLine.textContent;
 
-    const quoteEntry = {
-      id: uniqueId,
-      quote: newQuote,
-      author: author,
-      dateAdded: new Date().toISOString(),
-      source: source,
-    };
+    DOM.editQuoteForm.style.display = "flex";
+  } else if (btnClicked.id === "delete") {
+    const card = e.target.closest(".quote-card");
+    const quoteLine = card.querySelector(".quote-line");
 
-    quoteRecord.push(quoteEntry); // # In Memory
-    saveQuoteRecord(); // # local storage and Google Sheet.
-  };
+    deleteQuote(quoteLine.id);
+  }
+});
 
-  const editQuote = (quoteId, newQuote, author = "NA", source = "NA") => {
-    if (typeof newQuote !== "string" || typeof quoteId !== "string") {
-      throw new TypeError(`quoteId and newQuote should be strings.`);
-    }
+DOM.editQuoteForm.addEventListener("click", (e) => {
+  if (e.target.classList.contains("edit-quote-form")) {
+    DOM.editQuoteForm.style.display = "none";
+    return;
+  }
 
-    const quoteEntry = quoteRecord.find((quote) => quote.id === quoteId);
-    const quoteIndex = quoteRecord.findIndex((quote) => quote.id === quoteId);
+  const id = DOM.quoteIdInput.value;
+  const newQuote = DOM.editQuoteInput.value;
+  const author = DOM.editAuthorInput.value;
+  const source = DOM.editSourceInput.value;
 
-    if (!quoteEntry) {
-      throw new Error(`Quote not found`);
-    }
-
-    quoteEntry.id = quoteId;
-    quoteEntry.quote = newQuote;
-    quoteEntry.author = author;
-    quoteEntry.source = source;
-
-    quoteRecord.splice(quoteIndex, 1, quoteEntry); // # Alter in memory.
-    saveQuoteRecord(); // # Save to local storage and Google Sheet.
-  };
-
-  // # Saves to localStorage first
-  // then back up to Google Sheet.
-  const saveQuoteRecord = () => {
-    const serializedQuote = JSON.stringify(quoteRecord);
-
-    localStorage.setItem("QUOTES", serializedQuote);
-    // Back up to Google Sheet later. TODO
-  };
-
-  const deleteQuote = (quoteId) => {
-    if (typeof quoteId !== "string") {
-      throw new TypeError(`${quoteId} is not a string.`);
-    }
-
-    const quoteIndex = quoteRecord.findIndex((quote) => quote.id === quoteId);
-
-    if (quoteIndex === -1) {
-      throw new Error(`Quote not found`);
-    }
-
-    quoteRecord.splice(quoteIndex, 1); // # Alter in memory.
-    saveQuoteRecord(); // Save new state to local storage and Google Sheet.
-  };
-
-  // # Private Helpers
-
-  // # Basic quote index randomizer.
-  const randomizeIndex = (record) => {
-    if (!Array.isArray(record)) {
-      throw new TypeError(`${record}: is not valid array.`);
-    }
-
-    if (record.length === 0) {
-      throw new Error(`${record}: There is no record to randomize.`);
-    }
-
-    return Math.floor(Math.random() * record.length);
-  };
-
-  // # Random ID generator. <GOOGLED>
-  const createRandomId = (length = 8) => {
-    const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    let id = "";
-    const bytes = new Uint8Array(length);
-
-    crypto.getRandomValues(bytes);
-
-    for (const byte of bytes) {
-      // # To avoid modulo bias (248 is divisible by 62).
-      if (byte >= 248) {
-        return createRandomId(length);
-      }
-      id += characters[byte % 62];
-    }
-
-    return id;
-  };
-
-  // # Checks for collision.
-  const enforceUniqueId = () => {
-    let id = null; // # Not sure if null is better than undefined.
-
-    do {
-      id = createRandomId(); // # Creates the id once.
-    } while (quoteRecord.some((quote) => quote.id === id)); // # If it exists, execute the do block again.
-
-    return id; // # ID that has no match on our record.
-  };
-
-  return {
-    getAllQuotes,
-    getRandomQuote,
-    addNewQuote,
-    editQuote,
-    deleteQuote,
-  };
-})();
+  if (e.target.closest("button") && e.target.id === "edit-new-quote") {
+    editQuote(id, newQuote, author, source);
+  }
+});
