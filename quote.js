@@ -1,4 +1,4 @@
-import { writeDataToSheet } from "./googleSheetAPI.js";
+import { fetchSheetData, writeDataToSheet } from "./googleSheetAPI.js";
 
 // # IIFE
 export const QuoteDB = (() => {
@@ -31,7 +31,9 @@ export const QuoteDB = (() => {
     };
 
     quoteRecord.push(quoteEntry); // # In Memory
-    saveQuoteRecord(); // # local storage and Google Sheet.
+    saveQuoteRecord(); // # local storage
+    writeDataToSheet(quoteEntry); // # To Google Sheet
+    // TODO - need to fix edit and delete.
   };
 
   const editQuote = (quoteId, newQuote, author = "NA", source = "NA") => {
@@ -52,7 +54,7 @@ export const QuoteDB = (() => {
     quoteEntry.source = source;
 
     quoteRecord.splice(quoteIndex, 1, quoteEntry); // # Alter in memory.
-    saveQuoteRecord(); // # Save to local storage and Google Sheet.
+    saveQuoteRecord(); // # Save to local storage.
   };
 
   // # Saves to localStorage first
@@ -61,10 +63,6 @@ export const QuoteDB = (() => {
     const serializedQuote = JSON.stringify(quoteRecord);
 
     localStorage.setItem("QUOTES", serializedQuote);
-    // Back up to Google Sheet later. TODO
-    quoteRecord.forEach((quote) => {
-      writeDataToSheet(quote);
-    });
   };
 
   const deleteQuote = (quoteId) => {
@@ -88,6 +86,28 @@ export const QuoteDB = (() => {
   };
 
   // # Private Helpers
+
+  // async function checkSheet() {
+  //   const record = [];
+
+  //   const fromSheet = await fetchSheetData();
+
+  //   if (fromSheet.length === 0) {
+  //     return [];
+  //   }
+
+  //   for (let i = 1; i < fromSheet.length; i++) {
+  //     record.push({
+  //       id: fromSheet[i][0],
+  //       quote: fromSheet[i][1],
+  //       author: fromSheet[i][2],
+  //       dateAdded: fromSheet[i][3],
+  //       source: fromSheet[i][4],
+  //     });
+  //   }
+
+  //   return record;
+  // }
 
   // # Basic quote index randomizer.
   const randomizeIndex = (record) => {
