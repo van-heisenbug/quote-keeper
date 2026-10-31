@@ -1,0 +1,37 @@
+/* Header */
+header {
+  background-color: var(--card-bg);
+  padding-inline: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  height: 5rem;
+  border-bottom: 2px solid var(--card-border);
+}
+
+.header__brand {
+  display: flex;
+  align-items: center;
+  column-gap: 2rem;
+}
+
+.header__brand p {
+  display: flex;
+  color: var(--white-secondary);
+}
+
+.header__theme {
+  display: flex;
+  align-items: center;
+}
+
+.header__theme-toggle {
+  background-color: transparent;
+}
+
+.header__theme-dark {
+  display: none;
+}
+
+.header__theme-light {
+  display: block;
+}

@@ -2,14 +2,6 @@
 
 A quote management application built with HTML, CSS, and vanilla JavaScript, using Local Storage for local persistence and Google Sheets through Google Apps Script for remote storage.
 
-## Project Purpose
-
-- Rebuild QuoteKeeper as a hands-on learning project.
-- Practice software development by planning, implementing, testing, and explaining each part of the application.
-- Record the development process for YouTube so I can revisit the lessons and use the project as a portfolio reference.
-- Focus on understanding the code and architectural decisions rather than simply producing a working application with AI.
-- Document important problems, bugs, solutions, and lessons learned throughout development.
-
 ## Features
 
 - Create, read, update, and delete quotes.
