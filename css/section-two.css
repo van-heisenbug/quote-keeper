@@ -8,6 +8,9 @@
 
 .quote-manager {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
 }
 
 .quote-manager__head {
@@ -35,6 +38,7 @@
 }
 
 .quote-manager__search-icon {
+  background-color: transparent;
   position: absolute;
   left: 0.5rem;
   display: flex;
@@ -44,4 +48,68 @@
 .quote-manager__search-input {
   width: 100%;
   padding-inline-start: 2.5rem;
+}
+
+.quote-manager__table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  border-radius: 6px;
+  border: 2px solid var(--card-border);
+}
+
+.quote-manager__table thead {
+  background-color: var(--table-header);
+}
+
+.quote-manager__table thead tr th {
+  padding-block: 1.5rem;
+  text-align: left;
+}
+
+.quote-manager__table thead tr th:first-child {
+  padding-inline-start: 0.8rem;
+}
+
+.quote-manager__table thead tr th:last-child {
+  text-align: center;
+}
+
+.quote-manager__table tbody {
+  background-color: var(--card-bg);
+}
+
+.quote-manager__table tbody tr td {
+  padding-block: 0.8rem;
+}
+
+.quote-manager__table tbody tr td:first-child {
+  padding-inline-start: 1rem;
+}
+
+.quote-manager__table-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.8rem;
+}
+
+.quote-manager__table-edit {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+}
+.quote-manager__table-edit:hover {
+  border: 1px solid var(--purple-primary);
+}
+
+.quote-manager__table-trash {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--card-border);
+  border-radius: 6px;
+}
+.quote-manager__table-trash:hover {
+  border: 1px solid var(--red-primary);
 }

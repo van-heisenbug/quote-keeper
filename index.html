@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/section-one.css" />
     <link rel="stylesheet" href="css/section-two.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
   </head>
   <body>
     <header>
@@ -230,7 +231,7 @@
               </span>
             </div>
             <div class="quote-manager__search">
-              <span class="quote-manager__search-icon">
+              <button type="button" class="quote-manager__search-icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -242,7 +243,7 @@
                     d="M19.6,21l-6.3-6.3q-0.75,0.6-1.72,0.95T9.5,16q-2.72,0-4.61-1.89Q3,12.23 3,9.5Q3,6.77 4.89,4.89T9.5,3t4.61,1.89T16,9.5q0,1.1-0.35,2.07T14.7,13.3L21,19.6L19.6,21ZM9.5,14q1.88,0 3.19-1.31T14,9.5T12.69,6.31T9.5,5T6.31,6.31T5,9.5t1.31,3.19T9.5,14Z"
                   />
                 </svg>
-              </span>
+              </button>
               <input
                 type="search"
                 class="quote-manager__search-input"
@@ -252,10 +253,204 @@
             </div>
           </div>
           <table class="quote-manager__table">
-            <thead></thead>
-            <tbody></tbody>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Quote</th>
+                <th>Author</th>
+                <th>Source</th>
+                <th>Date Added</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>To love what you do, you have to love yourself first.</td>
+                <td>Albert The Who</td>
+                <td>Movie - Tropic Thunder</td>
+                <td>May 2, 2025</td>
+                <td class="quote-manager__table-action">
+                  <button type="button" class="quote-manager__table-edit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#2563eb"
+                    >
+                      <path
+                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
+                      />
+                    </svg>
+                  </button>
+                  <button type="button" class="quote-manager__table-trash">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#ef4444"
+                    >
+                      <path
+                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>To love what you do, you have to love yourself first.</td>
+                <td>Albert The Who</td>
+                <td>Movie - Tropic Thunder</td>
+                <td>May 2, 2025</td>
+                <td class="quote-manager__table-action">
+                  <button type="button" class="quote-manager__table-edit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#2563eb"
+                    >
+                      <path
+                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
+                      />
+                    </svg>
+                  </button>
+                  <button type="button" class="quote-manager__table-trash">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#ef4444"
+                    >
+                      <path
+                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>To love what you do, you have to love yourself first.</td>
+                <td>Albert The Who</td>
+                <td>Movie - Tropic Thunder</td>
+                <td>May 2, 2025</td>
+                <td class="quote-manager__table-action">
+                  <button type="button" class="quote-manager__table-edit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#2563eb"
+                    >
+                      <path
+                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
+                      />
+                    </svg>
+                  </button>
+                  <button type="button" class="quote-manager__table-trash">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#ef4444"
+                    >
+                      <path
+                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>To love what you do, you have to love yourself first.</td>
+                <td>Albert The Who</td>
+                <td>Movie - Tropic Thunder</td>
+                <td>May 2, 2025</td>
+                <td class="quote-manager__table-action">
+                  <button type="button" class="quote-manager__table-edit">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#2563eb"
+                    >
+                      <path
+                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
+                      />
+                    </svg>
+                  </button>
+                  <button type="button" class="quote-manager__table-trash">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      height="24px"
+                      width="24px"
+                      fill="#ef4444"
+                    >
+                      <path
+                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
+                      />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
           </table>
-          <div class="quote-manager__pagination"></div>
+          <div class="quote-manager__pagination">
+            <p class="pagination___current-page">Showing 20 of 200 quotes.</p>
+            <button type="button" class="pagination__trash">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                height="24px"
+                width="24px"
+                fill="#ef4444"
+              >
+                <path
+                  d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
+                />
+              </svg>
+              Trashed Quotes
+            </button>
+            <div class="pagination__pages">
+              <button type="button" class="pagination__previous">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  height="18px"
+                  width="18px"
+                  fill="#64748b"
+                >
+                  <path
+                    d="M16,22L6,12L16,2l1.78,1.77L9.55,12l8.23,8.23L16,22Z"
+                  />
+                </svg>
+              </button>
+              <button type="button" class="pagination__next">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  height="18px"
+                  width="18px"
+                  fill="#64748b"
+                >
+                  <path
+                    d="M8.03,22L6.25,20.23L14.48,12L6.25,3.77L8.03,2l10,10l-10,10Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>

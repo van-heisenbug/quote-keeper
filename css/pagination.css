@@ -1,0 +1,49 @@
+/* Pagination */
+
+.quote-manager__pagination {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+}
+
+.pagination__current-page {
+  background-color: teal;
+}
+
+.pagination__trash {
+  background-color: transparent;
+  color: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--red-primary);
+  display: flex;
+  column-gap: 0.5rem;
+}
+.pagination__trash:hover {
+  border: 1px solid var(--purple-primary);
+}
+
+.pagination__pages {
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.pagination__previous {
+  background-color: transparent;
+  border: 1px solid var(--white-disabled);
+  padding-inline: 0.8rem;
+  border-radius: 6px;
+}
+.pagination__previous:hover {
+  border: 1px solid var(--white-muted);
+}
+
+.pagination__next {
+  background-color: transparent;
+  border: 1px solid var(--white-disabled);
+  padding-inline: 0.8rem;
+  border-radius: 6px;
+}
+.pagination__next:hover {
+  border: 1px solid var(--white-muted);
+}
