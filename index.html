@@ -11,11 +11,11 @@
     <link rel="stylesheet" href="css/pagination.css" />
   </head>
   <body>
-    <header>
-      <nav class="header__brand">
-        <h1>Van's Quote Keeper</h1>
-        <p>Collect &bull; Save &bull; Get Motivated!</p>
-      </nav>
+    <header class="header">
+      <div class="header__brand">
+        <h1 class="header__title">Van's Quote Keeper</h1>
+        <p class="header__tagline">Collect &bull; Save &bull; Get Motivated!</p>
+      </div>
       <div class="header__theme">
         <button type="button" class="header__theme-toggle">
           <!-- Light Theme ICON -->
@@ -56,7 +56,7 @@
         <div class="quote-form__container">
           <div class="quote-form__head">
             <h2>Add a New Quote</h2>
-            <p>
+            <p class="quote-form__description">
               Fill in the details below to add a new quote to the collection.
             </p>
           </div>
@@ -137,12 +137,12 @@
                   d="M8.56,17.56Q9,17.13 9,16.5T8.56,15.44T7.5,15T6.44,15.44T6,16.5t0.44,1.06T7.5,18t1.06-0.44Zm0-9Q9,8.13 9,7.5T8.56,6.44T7.5,6T6.44,6.44T6,7.5T6.44,8.56T7.5,9T8.56,8.56Zm4.5,4.5Q13.5,12.63 13.5,12t-0.44-1.06T12,10.5t-1.06,0.44T10.5,12t0.44,1.06T12,13.5t1.06-0.44Zm4.5,4.5Q18,17.13 18,16.5t-0.44-1.06T16.5,15t-1.06,0.44T15,16.5t0.44,1.06T16.5,18t1.06-0.44Zm0-9Q18,8.13 18,7.5T17.56,6.44T16.5,6T15.44,6.44T15,7.5t0.44,1.06T16.5,9t1.06-0.44ZM5,21q-0.83,0-1.41-0.59T3,19V5Q3,4.17 3.59,3.59T5,3H19q0.83,0 1.41,0.59T21,5V19q0,0.82-0.59,1.41T19,21H5Zm0-2H19V5H5V19ZM5,5V19V5Z"
                 />
               </svg>
-              <span>
+              <div>
                 <h2>Random Quote</h2>
-                <p>
+                <p class="random-quote__description">
                   Click the button to get a random quote from the collection.
                 </p>
-              </span>
+              </div>
             </div>
           </div>
           <div class="random-quote__body">
@@ -161,7 +161,7 @@
               Get Random Quote
             </button>
             <div class="random-quote__details">
-              <h3>
+              <h3 class="random-quote__text">
                 The only way to do great work is to love what you are doing.
               </h3>
               <p class="random-quote__author">
@@ -225,10 +225,12 @@
                   d="M12,21q-3.78,0-6.39-1.16Q3,18.68 3,17V7Q3,5.35 5.64,4.17T12,3t6.36,1.17T21,7V17q0,1.68-2.61,2.84Q15.78,21 12,21ZM12,9.02q2.23,0 4.48-0.64T19,7.02Q18.73,6.3 16.49,5.65T12,5Q9.73,5 7.54,5.64T5,7.02Q5.35,7.77 7.54,8.4T12,9.02ZM12,14q1.05,0 2.03-0.1t1.86-0.29t1.67-0.46q0.79-0.27 1.44-0.63v-3q-0.65,0.35-1.44,0.63q-0.79,0.28-1.67,0.46T14.03,10.9T12,11T9.95,10.9T8.06,10.61Q7.18,10.43 6.4,10.15Q5.63,9.88 5,9.52v3q0.63,0.35 1.4,0.63q0.78,0.28 1.66,0.46T9.95,13.9T12,14Zm0,5q1.15,0 2.34-0.18t2.19-0.46t1.67-0.65q0.68-0.36 0.8-0.74V14.53q-0.65,0.35-1.44,0.63q-0.79,0.27-1.67,0.46T14.03,15.9T12,16T9.95,15.9T8.06,15.61Q7.18,15.43 6.4,15.15T5,14.53V17q0.13,0.38 0.79,0.73t1.66,0.64t2.2,0.46T12,19Z"
                 />
               </svg>
-              <span>
+              <div>
                 <h2>All Quotes</h2>
-                <p>Browse, search and manage quotes.</p>
-              </span>
+                <p class="quote-manager__description">
+                  Browse, search and manage quotes.
+                </p>
+              </div>
             </div>
             <div class="quote-manager__search">
               <button type="button" class="quote-manager__search-icon">
@@ -252,27 +254,40 @@
               />
             </div>
           </div>
-          <table class="quote-manager__table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Quote</th>
-                <th>Author</th>
-                <th>Source</th>
-                <th>Date Added</th>
-                <th>Action</th>
+          <table class="quote-manager__table" role="table">
+            <thead role="rowgroup">
+              <tr role="row">
+                <th role="columnheader" scope="col">ID</th>
+                <th role="columnheader" scope="col">Quote</th>
+                <th role="columnheader" scope="col">Author</th>
+                <th role="columnheader" scope="col">Source</th>
+                <th role="columnheader" scope="col">Date Added</th>
+                <th
+                  role="columnheader"
+                  scope="col"
+                  class="quote-manager__table-action"
+                >
+                  Action
+                </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>To love what you do, you have to love yourself first.</td>
-                <td>Albert The Who</td>
-                <td>Movie - Tropic Thunder</td>
-                <td>May 2, 2025</td>
-                <td class="quote-manager__table-action">
-                  <button type="button" class="quote-manager__table-edit">
+            <tbody role="rowgroup">
+              <tr role="row">
+                <td role="cell" data-label="ID">1</td>
+                <td role="cell" data-label="Quote">
+                  To love what you do, you have to love yourself first.
+                </td>
+                <td role="cell" data-label="Author">Albert The Who</td>
+                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
+                <td role="cell" data-label="Date Added">May 2, 2025</td>
+                <td role="cell" class="quote-manager__table-action">
+                  <button
+                    type="button"
+                    class="quote-manager__table-edit"
+                    aria-label="Edit quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -284,8 +299,13 @@
                       />
                     </svg>
                   </button>
-                  <button type="button" class="quote-manager__table-trash">
+                  <button
+                    type="button"
+                    class="quote-manager__table-trash"
+                    aria-label="Delete quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -299,15 +319,22 @@
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>To love what you do, you have to love yourself first.</td>
-                <td>Albert The Who</td>
-                <td>Movie - Tropic Thunder</td>
-                <td>May 2, 2025</td>
-                <td class="quote-manager__table-action">
-                  <button type="button" class="quote-manager__table-edit">
+              <tr role="row">
+                <td role="cell" data-label="ID">1</td>
+                <td role="cell" data-label="Quote">
+                  To love what you do, you have to love yourself first.
+                </td>
+                <td role="cell" data-label="Author">Albert The Who</td>
+                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
+                <td role="cell" data-label="Date Added">May 2, 2025</td>
+                <td role="cell" class="quote-manager__table-action">
+                  <button
+                    type="button"
+                    class="quote-manager__table-edit"
+                    aria-label="Edit quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -319,8 +346,13 @@
                       />
                     </svg>
                   </button>
-                  <button type="button" class="quote-manager__table-trash">
+                  <button
+                    type="button"
+                    class="quote-manager__table-trash"
+                    aria-label="Delete quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -334,15 +366,22 @@
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>To love what you do, you have to love yourself first.</td>
-                <td>Albert The Who</td>
-                <td>Movie - Tropic Thunder</td>
-                <td>May 2, 2025</td>
-                <td class="quote-manager__table-action">
-                  <button type="button" class="quote-manager__table-edit">
+              <tr role="row">
+                <td role="cell" data-label="ID">1</td>
+                <td role="cell" data-label="Quote">
+                  To love what you do, you have to love yourself first.
+                </td>
+                <td role="cell" data-label="Author">Albert The Who</td>
+                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
+                <td role="cell" data-label="Date Added">May 2, 2025</td>
+                <td role="cell" class="quote-manager__table-action">
+                  <button
+                    type="button"
+                    class="quote-manager__table-edit"
+                    aria-label="Edit quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -354,8 +393,13 @@
                       />
                     </svg>
                   </button>
-                  <button type="button" class="quote-manager__table-trash">
+                  <button
+                    type="button"
+                    class="quote-manager__table-trash"
+                    aria-label="Delete quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -369,15 +413,22 @@
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>1</td>
-                <td>To love what you do, you have to love yourself first.</td>
-                <td>Albert The Who</td>
-                <td>Movie - Tropic Thunder</td>
-                <td>May 2, 2025</td>
-                <td class="quote-manager__table-action">
-                  <button type="button" class="quote-manager__table-edit">
+              <tr role="row">
+                <td role="cell" data-label="ID">1</td>
+                <td role="cell" data-label="Quote">
+                  To love what you do, you have to love yourself first.
+                </td>
+                <td role="cell" data-label="Author">Albert The Who</td>
+                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
+                <td role="cell" data-label="Date Added">May 2, 2025</td>
+                <td role="cell" class="quote-manager__table-action">
+                  <button
+                    type="button"
+                    class="quote-manager__table-edit"
+                    aria-label="Edit quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -389,8 +440,13 @@
                       />
                     </svg>
                   </button>
-                  <button type="button" class="quote-manager__table-trash">
+                  <button
+                    type="button"
+                    class="quote-manager__table-trash"
+                    aria-label="Delete quote"
+                  >
                     <svg
+                      aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
                       height="24px"
@@ -407,7 +463,7 @@
             </tbody>
           </table>
           <div class="quote-manager__pagination">
-            <p class="pagination___current-page">Showing 20 of 200 quotes.</p>
+            <p class="pagination__current-page">Showing 20 of 200 quotes.</p>
             <button type="button" class="pagination__trash">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

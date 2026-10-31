@@ -1,48 +1,47 @@
-/* Section Two */
 .section-two {
   margin-block-start: 2rem;
   background-color: var(--card-bg);
   border: 2px solid var(--card-border);
-  border-radius: 6px;
+  border-radius: var(--radius);
 }
 
 .quote-manager {
-  padding: 1rem;
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  gap: 2rem;
+  padding: 1rem;
 }
 
 .quote-manager__head {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .quote-manager__label {
-  flex: 4;
   display: flex;
+  flex: 4;
   align-items: center;
-  column-gap: 1rem;
+  gap: 1rem;
 }
 
-.quote-manager__label p {
+.quote-manager__description {
   color: var(--white-secondary);
 }
 
 .quote-manager__search {
-  flex: 2;
-  display: flex;
-  align-items: center;
   position: relative;
+  display: flex;
+  flex: 2;
+  align-items: center;
+  min-width: 16rem;
 }
 
 .quote-manager__search-icon {
-  background-color: transparent;
   position: absolute;
   left: 0.5rem;
-  display: flex;
-  align-items: center;
 }
 
 .quote-manager__search-input {
@@ -50,66 +49,107 @@
   padding-inline-start: 2.5rem;
 }
 
+/* Table */
 .quote-manager__table {
+  width: 100%;
+  border: 2px solid var(--card-border);
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
-  border-radius: 6px;
-  border: 2px solid var(--card-border);
+  border-radius: var(--radius);
 }
 
-.quote-manager__table thead {
-  background-color: var(--table-header);
-}
-
-.quote-manager__table thead tr th {
-  padding-block: 1.5rem;
+/* :where() keeps this base rule weak so column classes can override it */
+:where(.quote-manager__table) :is(th, td) {
+  padding: 0.8rem;
   text-align: left;
 }
 
-.quote-manager__table thead tr th:first-child {
-  padding-inline-start: 0.8rem;
+.quote-manager__table th {
+  padding-block: 1.5rem;
+  background-color: var(--table-header);
 }
 
-.quote-manager__table thead tr th:last-child {
-  text-align: center;
-}
-
-.quote-manager__table tbody {
+.quote-manager__table td {
   background-color: var(--card-bg);
-}
-
-.quote-manager__table tbody tr td {
-  padding-block: 0.8rem;
-}
-
-.quote-manager__table tbody tr td:first-child {
-  padding-inline-start: 1rem;
+  border-bottom: 1px solid var(--card-border);
 }
 
 .quote-manager__table-action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  column-gap: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
 }
 
-.quote-manager__table-edit {
+.quote-manager__table-edit,
+.quote-manager__table-trash {
   padding: 0.5rem;
-  background-color: transparent;
   border: 1px solid var(--card-border);
-  border-radius: 6px;
-}
-.quote-manager__table-edit:hover {
-  border: 1px solid var(--purple-primary);
+  border-radius: var(--radius);
 }
 
 .quote-manager__table-trash {
-  padding: 0.5rem;
-  background-color: transparent;
-  border: 1px solid var(--card-border);
-  border-radius: 6px;
+  margin-inline-start: 0.8rem;
 }
+
+.quote-manager__table-edit:hover {
+  border-color: var(--purple-primary);
+}
+
 .quote-manager__table-trash:hover {
-  border: 1px solid var(--red-primary);
+  border-color: var(--red-primary);
+}
+
+@media (max-width: 700px) {
+  .quote-manager__table,
+  .quote-manager__table tbody,
+  .quote-manager__table tr {
+    display: block;
+  }
+
+  .quote-manager__table {
+    border: none;
+  }
+
+  /* Hide the header row visually, but keep it for screen readers */
+  .quote-manager__table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  /* Each row becomes a card */
+  .quote-manager__table tr {
+    margin-block-end: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+  }
+
+  /* Each cell shows its label, then its value */
+  .quote-manager__table td {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 1rem;
+  }
+
+  .quote-manager__table td:last-child {
+    border-bottom: none;
+  }
+
+  .quote-manager__table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: var(--white-muted);
+  }
+
+  /* The buttons row has no label */
+  .quote-manager__table .quote-manager__table-action {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .quote-manager__table .quote-manager__table-action::before {
+    content: none;
+  }
 }

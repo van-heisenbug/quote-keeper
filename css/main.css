@@ -12,7 +12,6 @@
   --main-bg: #0b1220;
   --card-bg: #111c2d;
   --input-bg: #1a2740;
-
   --table-header: #17243a;
 
   --white-primary: #f8fafc;
@@ -24,12 +23,13 @@
   --purple-secondary: #6366f1;
   --blue-primary: #2563eb;
   --blue-secondary: #818cf8;
-
   --green-primary: #22c55e;
-
   --red-primary: #ef4444;
 
   --card-border: #263750;
+
+  --radius: 6px;
+  --page-gutter: 2.5rem;
 }
 
 body {
@@ -39,33 +39,62 @@ body {
 }
 
 main {
-  padding-inline: 2.5rem;
+  padding-inline: var(--page-gutter);
+  padding-block-end: 2rem;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  display: flex;
-  align-items: center;
+svg {
+  flex-shrink: 0;
 }
 
+/* Form controls */
 button,
 input,
 textarea {
-  font-family: var(--basic-font);
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 input,
 textarea {
-  background-color: var(--input-bg);
-  border: 1px solid var(--blue-secondary);
-  border-radius: 6px;
-  outline: none;
+  padding: 0.5rem;
   color: var(--white-secondary);
   letter-spacing: 0.12rem;
-  padding: 0.5rem;
+  background-color: var(--input-bg);
+  border: 1px solid var(--blue-secondary);
+  border-radius: var(--radius);
+  outline: none;
 }
 
 input {
   height: 2.5rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--purple-secondary);
+}
+
+button:focus-visible {
+  outline: 2px solid var(--blue-secondary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+  :root {
+    --page-gutter: 1rem;
+  }
 }
