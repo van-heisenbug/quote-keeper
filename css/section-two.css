@@ -81,6 +81,7 @@
 
 .quote-manager__table tbody tr td {
   padding-block: 0.8rem;
+  border-bottom: 1px solid var(--card-border);
 }
 
 .quote-manager__table tbody tr td:first-child {
