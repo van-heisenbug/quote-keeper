@@ -7,16 +7,10 @@
   padding: 0.8rem;
 }
 
-<<<<<<< HEAD
-.pagination__current-page {
-  display: flex;
-  align-items: center;
-=======
 .pagination__trash {
   padding: 0.5rem;
   border: 1px solid var(--red-primary);
   border-radius: var(--radius);
->>>>>>> refine-ui
 }
 
 .pagination__trash:hover {

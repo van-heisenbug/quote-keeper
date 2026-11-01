@@ -104,36 +104,6 @@ A quote management application built with HTML, CSS, and vanilla JavaScript, usi
 - Git and GitHub.
 - Debugging, testing, and incremental development.
 
-## Color Palette
-
-### Backgrounds
-
-#0B1220 - Main background
-#111C2D - Card background
-#17243A - Table header / hover
-#1A2740 - Input background
-
-### Text Colors
-
-#F8FAFC - Primary labels / headings
-#B8C7E0 - Body text
-#8FA8CC - Muted labels / placeholders
-#64748B - Disabled / subtle text
-
-### Brand and Action Colors
-
-#4F46E5 - Primary purple / brand
-#6366F1 - Accent / selected page
-#2563EB - Add button / blue action
-#818CF8 - Quote marks / highlights
-
-### Borders and Status Colors
-
-#263750 - Card borders / dividers
-#22C55E - Success / confirmation
-#EF4444 - Delete / destructive action
-#EF4444 - Delete / destructive action
-
 ## Stages to Build
 
 ### 01. UI Foundation

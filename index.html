@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="css/section-one.css" />
     <link rel="stylesheet" href="css/section-two.css" />
     <link rel="stylesheet" href="css/pagination.css" />
+    <script type="module" src="js/main.js"></script>
+    i
   </head>
   <body>
     <header class="header">
@@ -60,8 +62,8 @@
               Fill in the details below to add a new quote to the collection.
             </p>
           </div>
-          <form class="quote-form">
-            <div class="quote-form__control">
+          <form class="quote-form" id="quote-form">
+            <div class="quote-form__control" id="quote-form__control">
               <label for="quote">Quote *</label>
               <textarea
                 id="quote"
@@ -69,7 +71,12 @@
                 rows="3"
                 maxlength="300"
                 spellcheck="false"
+                class="quote-form__input"
               ></textarea>
+              <small
+                class="quote-form__control-check"
+                id="quote-form__control-check"
+              ></small>
             </div>
             <div class="quote-form__divider">
               <div class="quote-form__control">
@@ -81,6 +88,10 @@
                   placeholder="e.g. Albert Einstein"
                   spellcheck="false"
                 />
+                <small
+                  class="quote-form__control-check"
+                  id="quote-form__control-check"
+                ></small>
               </div>
               <div class="quote-form__control">
                 <label for="source">Source</label>
@@ -91,10 +102,18 @@
                   placeholder="e.g. Book, Movie, Video..."
                   spellcheck="false"
                 />
+                <small
+                  class="quote-form__control-check"
+                  id="quote-form__control-check"
+                ></small>
               </div>
             </div>
             <div class="quote-form__control quote-form__cta">
-              <button type="button" class="quote-form__add-quote">
+              <button
+                type="submit"
+                class="quote-form__add-quote"
+                id="quote-form__add-quote"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -106,7 +125,11 @@
                 </svg>
                 Add Quote
               </button>
-              <button type="button" class="quote-form__clear">
+              <button
+                type="button"
+                class="quote-form__clear"
+                id="quote-form__clear"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -272,147 +295,6 @@
               </tr>
             </thead>
             <tbody role="rowgroup">
-              <tr role="row">
-                <td role="cell" data-label="ID">1</td>
-                <td role="cell" data-label="Quote">
-                  To love what you do, you have to love yourself first.
-                </td>
-                <td role="cell" data-label="Author">Albert The Who</td>
-                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
-                <td role="cell" data-label="Date Added">May 2, 2025</td>
-                <td role="cell" class="quote-manager__table-action">
-                  <button
-                    type="button"
-                    class="quote-manager__table-edit"
-                    aria-label="Edit quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#2563eb"
-                    >
-                      <path
-                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    class="quote-manager__table-trash"
-                    aria-label="Delete quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#ef4444"
-                    >
-                      <path
-                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-              <tr role="row">
-                <td role="cell" data-label="ID">1</td>
-                <td role="cell" data-label="Quote">
-                  To love what you do, you have to love yourself first.
-                </td>
-                <td role="cell" data-label="Author">Albert The Who</td>
-                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
-                <td role="cell" data-label="Date Added">May 2, 2025</td>
-                <td role="cell" class="quote-manager__table-action">
-                  <button
-                    type="button"
-                    class="quote-manager__table-edit"
-                    aria-label="Edit quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#2563eb"
-                    >
-                      <path
-                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    class="quote-manager__table-trash"
-                    aria-label="Delete quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#ef4444"
-                    >
-                      <path
-                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
-              <tr role="row">
-                <td role="cell" data-label="ID">1</td>
-                <td role="cell" data-label="Quote">
-                  To love what you do, you have to love yourself first.
-                </td>
-                <td role="cell" data-label="Author">Albert The Who</td>
-                <td role="cell" data-label="Source">Movie - Tropic Thunder</td>
-                <td role="cell" data-label="Date Added">May 2, 2025</td>
-                <td role="cell" class="quote-manager__table-action">
-                  <button
-                    type="button"
-                    class="quote-manager__table-edit"
-                    aria-label="Edit quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#2563eb"
-                    >
-                      <path
-                        d="M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    type="button"
-                    class="quote-manager__table-trash"
-                    aria-label="Delete quote"
-                  >
-                    <svg
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      height="24px"
-                      width="24px"
-                      fill="#ef4444"
-                    >
-                      <path
-                        d="M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
               <tr role="row">
                 <td role="cell" data-label="ID">1</td>
                 <td role="cell" data-label="Quote">

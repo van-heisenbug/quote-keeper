@@ -44,9 +44,11 @@
 }
 
 .quote-form__control {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding-block-end: 1.5rem;
 }
 
 .quote-form__cta {
@@ -76,6 +78,27 @@
 
 .quote-form__clear:hover {
   background-color: var(--red-primary);
+}
+
+/* Error and Success Messages */
+.quote-form__control .quote-form__control-check {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.quote-form__control.success .quote-form__input {
+  border: 1px solid var(--green-primary);
+}
+
+.quote-form__control.error .quote-form__control-check {
+  display: block;
+  color: var(--red-primary);
+}
+
+.quote-form__control.error .quote-form__input {
+  border: 1px solid var(--red-primary);
 }
 
 /* Random quote */
