@@ -1,6 +1,6 @@
 export function FormDom() {
   const quoteForm = document.getElementById("quote-form");
-  const quoteFormControl = document.getElementById("quote-form__control");
+  const quoteFormControl = document.querySelector(".quote-form__control");
 
   const quoteInput = document.getElementById("quote");
   const authorInput = document.getElementById("author");

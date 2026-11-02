@@ -1,13 +1,6 @@
 // # IMPORTS
-import { Form } from "./view/form.js";
-import { FormDom } from "./view/formDom.js";
+import { FormController } from "./controller/form-controller.js";
 
-const form = FormDom();
-const b = Form(form);
+const formControl = FormController();
 
-form.quoteForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  console.log(b.getFormEntry());
-});
-
-form.clearQuoteBtn.addEventListener("click", b.clearFormEntry);
+formControl.init();
