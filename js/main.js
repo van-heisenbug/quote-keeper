@@ -1,13 +1,13 @@
 // # IMPORTS
-import { clearFormEntry, getFormEntry } from "./view/formEntry.js";
-import { formDom } from "./view/dom.js";
+import { Form } from "./view/form.js";
+import { FormDom } from "./view/formDom.js";
 
-const form = formDom();
+const form = FormDom();
+const b = Form(form);
 
 form.quoteForm.addEventListener("submit", (e) => {
-  const b = getFormEntry(e);
-
-  console.log(b);
+  e.preventDefault();
+  console.log(b.getFormEntry());
 });
 
-form.clearQuoteBtn.addEventListener("click", clearFormEntry);
+form.clearQuoteBtn.addEventListener("click", b.clearFormEntry);

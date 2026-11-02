@@ -1,4 +1,4 @@
-export function formDom() {
+export function FormDom() {
   const quoteForm = document.getElementById("quote-form");
   const quoteFormControl = document.getElementById("quote-form__control");
 
