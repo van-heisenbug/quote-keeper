@@ -1,6 +1,13 @@
 // # IMPORTS
-import { checkForm } from "./view/form-validation.js";
+import { clearFormEntry, getFormEntry } from "./view/formEntry.js";
+import { formDom } from "./view/dom.js";
 
-const test = checkForm();
+const form = formDom();
 
-console.log(test);
+form.quoteForm.addEventListener("submit", (e) => {
+  const b = getFormEntry(e);
+
+  console.log(b);
+});
+
+form.clearQuoteBtn.addEventListener("click", clearFormEntry);
