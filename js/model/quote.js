@@ -40,6 +40,10 @@ export function Quote({
     return _dateTrashed;
   };
 
+  const getSerializedQuote = () => {
+    return { id, quote, author, source, dateAdded, _dateTrashed, _isTrashed };
+  };
+
   // # MUTATOR
 
   const setQuote = (newQuote) => {
@@ -76,6 +80,7 @@ export function Quote({
     getDateAdded,
     getStatus,
     getDateTrashed,
+    getSerializedQuote,
     setQuote,
     setAuthor,
     setSource,

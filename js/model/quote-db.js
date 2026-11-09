@@ -2,32 +2,37 @@
 
 // Talks to the DB
 export function QuoteDb() {
-  let localQuoteRecord = [];
+  let localQuoteRecord = fetchFromLocalStorage() || [];
 
-  function buildLocalData() {
-    const localQuoteData = fetchFromLocalStorage();
-    const googleSheetData = fetchFromGoogleSheet();
+  const getLocalQuoteRecord = () => {
+    // return structuredClone(localQuoteRecord);
+    return localQuoteRecord;
+  };
 
-    if (localQuoteData.length === 0) {
-    }
-  }
-
-  const fetchFromLocalStorage = () => {
+  function fetchFromLocalStorage() {
     try {
-      return JSON.parse(localStorage.getItem("QUOTES")) || [];
+      return JSON.parse(localStorage.getItem("QUOTES"));
     } catch (error) {
       throw new Error(`Fetching from local storage failed! ${error.message}`);
     }
+  }
+
+  const insertNewQuote = (newQuote = {}) => {
+    if (typeof newQuote !== "object" && Object.keys(newQuote).length === 0) {
+      throw new TypeError("newQuote must be a valid object.");
+    }
+
+    localQuoteRecord.push(newQuote);
   };
 
-  const fetchFromGoogleSheet = () => {
-    // Call sheet API / web app url
+  const updateLocalStorage = () => {
+    localStorage.setItem("QUOTES", JSON.stringify(localQuoteRecord));
   };
 
-  const saveToLocal = () => {};
-  const saveToSheet = () => {};
-
-  const saveQuoteEntry = () => {};
-
-  const editQuote = () => {};
+  return {
+    getLocalQuoteRecord,
+    fetchFromLocalStorage,
+    updateLocalStorage,
+    insertNewQuote,
+  };
 }
