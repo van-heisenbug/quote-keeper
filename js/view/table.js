@@ -4,10 +4,6 @@ export function Table() {
   const tableDom = TableDom();
 
   function renderTable(quoteRecord = []) {
-    if (quoteRecord.length <= 0) {
-      throw new TypeError("quoteRecord cannot be empty.");
-    }
-
     const fragment = document.createDocumentFragment();
 
     quoteRecord.forEach((quote) => {
@@ -16,6 +12,7 @@ export function Table() {
       fragment.appendChild(quoteRow);
     });
 
+    tableDom.tableBody.innerHTML = "";
     tableDom.tableBody.appendChild(fragment);
   }
 
@@ -35,7 +32,7 @@ export function Table() {
     const svgNamespace = "http://www.w3.org/2000/svg";
 
     const editSvg = document.createElementNS(svgNamespace, "svg");
-    editSvg.setAttribute("viewbox", "0 0 24 24");
+    editSvg.setAttribute("viewBox", "0 0 24 24");
     editSvg.setAttribute("height", "24");
     editSvg.setAttribute("width", "24");
     editSvg.setAttribute("fill", "#2563eb");
@@ -50,7 +47,7 @@ export function Table() {
     editBtn.appendChild(editSvg);
 
     const trashSvg = document.createElementNS(svgNamespace, "svg");
-    trashSvg.setAttribute("viewbox", "0 0 24 24");
+    trashSvg.setAttribute("viewBox", "0 0 24 24");
     trashSvg.setAttribute("height", "24");
     trashSvg.setAttribute("width", "24");
     trashSvg.setAttribute("fill", "#ef4444");
@@ -58,7 +55,7 @@ export function Table() {
     const trashSvgPath = document.createElementNS(svgNamespace, "path");
     trashSvgPath.setAttribute(
       "d",
-      "M5,19H6.43L16.2,9.23L14.78,7.8L5,17.58V19ZM3,21V16.75L16.2,3.57q0.3-0.28 0.66-0.43T17.63,3q0.4,0 0.78,0.15T19.05,3.6L20.43,5q0.3,0.27 0.44,0.65T21,6.4q0,0.4-0.14,0.76T20.43,7.82L7.25,21H3ZM19,6.4L17.6,5L19,6.4ZM15.48,8.52L14.78,7.8L16.2,9.23l-0.72-0.7Z",
+      "M7,21q-0.82,0-1.41-0.59T5,19V6H4V4H9V3h6V4h5V6H19V19q0,0.82-0.59,1.41T17,21H7ZM17,6H7V19H17V6ZM9,17h2V8H9v9Zm4,0h2V8H13v9ZM7,6V19V6Z",
     );
 
     trashSvg.appendChild(trashSvgPath);
@@ -90,33 +87,32 @@ export function Table() {
     const tr = document.createElement("tr");
     tr.role = "row";
 
-    for (let i = 0; i < Object.values(columns).length; i++) {
+    for (const item of Object.values(columns)) {
       const td = document.createElement("td");
       td.role = "cell";
 
-      if (i === Object.values(columns).length - 1) {
-        td.appendChild(actionButtons);
+      if (item instanceof Node) {
+        td.classList.add("quote-manager__table-action");
+        td.appendChild(item);
+      } else {
+        td.textContent = item;
       }
-
-      td.textContent = Object.values(columns)[i];
 
       tr.appendChild(td);
     }
-
-    // for (const item of Object.values(columns)) {
-    //   const td = document.createElement("td");
-    //   td.role = "cell";
-    //   td.textContent = item;
-
-    //   tr.appendChild(td);
-    // }
 
     fragment.appendChild(tr);
 
     return fragment;
   }
 
+  function insertTableRow(quote = {}) {
+    const quoteRow = createTableRow(quote);
+    tableDom.tableBody.appendChild(quoteRow);
+  }
+
   return {
     renderTable,
+    insertTableRow,
   };
 }

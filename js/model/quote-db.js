@@ -5,8 +5,7 @@ export function QuoteDb() {
   let localQuoteRecord = fetchFromLocalStorage() || [];
 
   const getLocalQuoteRecord = () => {
-    // return structuredClone(localQuoteRecord);
-    return localQuoteRecord;
+    return structuredClone(localQuoteRecord);
   };
 
   function fetchFromLocalStorage() {
@@ -31,7 +30,6 @@ export function QuoteDb() {
 
   return {
     getLocalQuoteRecord,
-    fetchFromLocalStorage,
     updateLocalStorage,
     insertNewQuote,
   };
