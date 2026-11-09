@@ -7,7 +7,7 @@
 }
 
 :root {
-  --basic-font: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --basic-font: "Albert Sans", sans-serif;
 
   --main-bg: #0b1220;
   --card-bg: #111c2d;
@@ -68,11 +68,15 @@ input,
 textarea {
   padding: 0.5rem;
   color: var(--white-secondary);
-  letter-spacing: 0.12rem;
   background-color: var(--input-bg);
   border: 1px solid var(--blue-secondary);
   border-radius: var(--radius);
   outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: var(--basic-font);
 }
 
 input {

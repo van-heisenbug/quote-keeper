@@ -69,36 +69,47 @@ export function Table() {
     return fragment;
   }
 
-  function createTableRow({ id, quote, author, source, dateAdded } = {}) {
+  function createTableRow(quote = {}) {
     const fragment = document.createDocumentFragment();
 
     const actionButtons = createActionButtons(); // DOM fragment.
 
-    const columns = [id, quote, author, source, dateAdded, actionButtons];
+    const columns = {
+      id: quote.id,
+      quote: quote.quote,
+      author: quote.author,
+      source: quote.source,
+      dataAdded: new Date(quote.dateAdded).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      }),
+      action: actionButtons,
+    };
 
     const tr = document.createElement("tr");
     tr.role = "row";
 
-    for (let i = 0; i < columns.length; i++) {
+    for (let i = 0; i < Object.values(columns).length; i++) {
       const td = document.createElement("td");
       td.role = "cell";
 
-      // TOFUCKING DOOOO - because of my dumb code here, it's overwriting my button fragment
-      // if (i !== columns.length - 1) {
-      //   td.dataset.label = columns[i];
-      // } else {
-      //   td.classList.add("quote-manager__table-action");
-      //   td.appendChild(actionButtons);
-      // }
+      if (i === Object.values(columns).length - 1) {
+        td.appendChild(actionButtons);
+      }
 
-      // if (i !== columns.length - 2) {
-      //   td.textContent = columns[i];
-      // } else {
-      //   td.textContent = new Date(columns[i]).toLocaleDateString();
-      // }
+      td.textContent = Object.values(columns)[i];
 
       tr.appendChild(td);
     }
+
+    // for (const item of Object.values(columns)) {
+    //   const td = document.createElement("td");
+    //   td.role = "cell";
+    //   td.textContent = item;
+
+    //   tr.appendChild(td);
+    // }
 
     fragment.appendChild(tr);
 
