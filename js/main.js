@@ -1,6 +1,6 @@
 // # IMPORTS
 import { FormController } from "./controller/form-controller.js";
 
-const formControl = FormController();
+const formController = FormController();
 
-formControl.init();
+formController.init();
