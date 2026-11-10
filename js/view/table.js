@@ -17,8 +17,7 @@ export function Table() {
       fragment.appendChild(quoteRow);
     });
 
-    tableDom.tableBody.innerHTML = "";
-    tableDom.tableBody.appendChild(fragment);
+    tableDom.tableBody.replaceChildren(fragment);
   }
 
   function _createActionButtons() {
@@ -115,6 +114,10 @@ export function Table() {
     const quoteRow = _createTableRow(quote);
     tableDom.tableBody.appendChild(quoteRow);
   }
+
+  // function deleteTableRow() {}
+  // Will use something I found in Google parent.replaceChildren() -> accepts one or more new child to replace or child.replaceWith(newChild)
+  // also parent.replaceChild(newChild, oldChild)
 
   return {
     renderTable,

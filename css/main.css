@@ -36,6 +36,7 @@ body {
   background-color: var(--main-bg);
   color: var(--white-primary);
   font-family: var(--basic-font);
+  font-size: 1rem;
 }
 
 /* Called by JS when a modal is active to avoid scrolling */
@@ -114,7 +115,6 @@ h2 {
 }
 
 p {
-  font-size: 18px;
   font-weight: 400;
 }
 

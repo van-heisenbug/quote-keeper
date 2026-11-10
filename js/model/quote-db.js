@@ -1,6 +1,8 @@
 // # DEPENDENCIES
 
 // Talks to the DB
+// TODO - currently dependent on its localQuoteRecord state
+// Because of this, I have to create another instance to get updated local storage data.
 export function QuoteDb() {
   let localQuoteRecord = fetchFromLocalStorage() || [];
 

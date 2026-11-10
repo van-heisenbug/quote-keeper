@@ -24,12 +24,64 @@
 
 .modal_header {
   background-color: #ebeaea;
+  margin-block-end: 1rem;
+  padding: 0.5rem;
 }
 
 .modal_body {
   background-color: #ebeaea;
+  margin-block-end: 1rem;
+  padding: 0.5rem;
 }
 
 .modal_footer {
   background-color: #ebeaea;
+  padding: 0.5rem;
+}
+
+/* Dynamically added */
+.trash_header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  align-items: center;
+}
+
+.trash_header .trash_question {
+  font-weight: 500;
+}
+
+.trash_body {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(238, 238, 238);
+  border-radius: 6px;
+}
+
+.trash_body .quote_to_trash {
+  font-style: italic;
+  font-size: 1rem;
+  color: #000;
+}
+
+.trash_footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.trash_footer .yes-btn,
+.trash_footer .no-btn {
+  outline: none;
+  border: none;
+  padding: 1rem 3rem;
+  color: #fff;
+  border-radius: 6px;
+}
+
+.trash_footer .yes-btn {
+  background-color: var(--red-primary);
+}
+
+.trash_footer .no-btn {
+  background-color: var(--green-primary);
 }
