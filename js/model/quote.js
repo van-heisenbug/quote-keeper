@@ -1,20 +1,28 @@
 // # DEPENDENCIES
 
-// Quote Model
+/**
+ *
+ * @param with fallback values are for old data preservation.
+ * @returns Quote Object
+ */
 export function Quote({
   id = crypto.randomUUID(),
   quote,
   author,
   source,
   dateAdded = new Date().toISOString(),
+  isTrashed = false,
+  dateTrashed = null,
 } = {}) {
   // On Call
   _validateEntry();
 
   // # INTERNAL
 
-  let _isTrashed = false;
-  let _dateTrashed = null;
+  // _isTrashed is the internal state that can change over time.
+  // isTrashed is the constructor parameter used to initialize that state.
+  let _isTrashed = isTrashed;
+  let _dateTrashed = dateTrashed;
 
   // # READER
 
@@ -40,8 +48,17 @@ export function Quote({
     return _dateTrashed;
   };
 
+  // For JSON stringifying.
   const getSerializedQuote = () => {
-    return { id, quote, author, source, dateAdded, _dateTrashed, _isTrashed };
+    return {
+      id,
+      quote,
+      author,
+      source,
+      dateAdded,
+      dateTrashed: _dateTrashed, // dateTrashed is my new object prop that holds the final mutated state of private _dateTrashed
+      isTrashed: _isTrashed,
+    };
   };
 
   // # MUTATOR

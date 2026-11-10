@@ -16,9 +16,20 @@
     <link rel="stylesheet" href="css/section-one.css" />
     <link rel="stylesheet" href="css/section-two.css" />
     <link rel="stylesheet" href="css/pagination.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+
     <script type="module" src="js/main.js"></script>
   </head>
   <body>
+    <!-- MODAL -->
+    <div class="modal-backdrop">
+      <div class="modal">
+        <div class="modal_header"></div>
+        <div class="modal_body"></div>
+        <div class="modal_footer"></div>
+      </div>
+    </div>
+    <!-- MODAL -->
     <header class="header">
       <div class="header__brand">
         <h1 class="header__title">Van's Quote Keeper</h1>
@@ -291,7 +302,9 @@
                 </th>
               </tr>
             </thead>
-            <tbody role="rowgroup" class="quote-manager__table-body"></tbody>
+            <tbody role="rowgroup" class="quote-manager__table-body">
+              <!-- JS Injection -->
+            </tbody>
           </table>
           <div class="quote-manager__pagination">
             <p class="pagination__current-page">Showing 20 of 200 quotes.</p>

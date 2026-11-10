@@ -16,10 +16,6 @@
   gap: 0.25rem 2rem;
 }
 
-.header__title {
-  font-size: 1.5rem;
-}
-
 .header__tagline {
   color: var(--white-secondary);
 }

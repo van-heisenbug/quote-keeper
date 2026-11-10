@@ -3,11 +3,16 @@ import { TableDom } from "./table-dom.js";
 export function Table() {
   const tableDom = TableDom();
 
+  /**
+   *
+   * @param [Array] quoteRecord
+   * @return the entire table with quotes.
+   */
   function renderTable(quoteRecord = []) {
     const fragment = document.createDocumentFragment();
 
     quoteRecord.forEach((quote) => {
-      const quoteRow = createTableRow(quote); // DOM fragment
+      const quoteRow = _createTableRow(quote); // DOM fragment
 
       fragment.appendChild(quoteRow);
     });
@@ -16,7 +21,7 @@ export function Table() {
     tableDom.tableBody.appendChild(fragment);
   }
 
-  function createActionButtons() {
+  function _createActionButtons() {
     const fragment = document.createDocumentFragment();
 
     const editBtn = document.createElement("button");
@@ -66,10 +71,10 @@ export function Table() {
     return fragment;
   }
 
-  function createTableRow(quote = {}) {
+  function _createTableRow(quote = {}) {
     const fragment = document.createDocumentFragment();
 
-    const actionButtons = createActionButtons(); // DOM fragment.
+    const actionButtons = _createActionButtons(); // DOM fragment.
 
     const columns = {
       id: quote.id,
@@ -107,7 +112,7 @@ export function Table() {
   }
 
   function insertTableRow(quote = {}) {
-    const quoteRow = createTableRow(quote);
+    const quoteRow = _createTableRow(quote);
     tableDom.tableBody.appendChild(quoteRow);
   }
 
