@@ -1,6 +1,5 @@
 // # IMPORTS
 import { QuoteDb } from "../model/quote-db.js";
-import { Modal } from "../view/modal.js";
 import { TableDom } from "../view/table-dom.js";
 import { Table } from "../view/table.js";
 
@@ -19,47 +18,19 @@ export function TableController() {
 
       if (!target.closest("button")) return;
 
-      const button = target.closest("button");
-      const row = button.closest("tr");
-      const quoteId = row.firstElementChild.textContent;
-      // Modal Content for Trash
-      const trashContent = createTrashModalContent();
-      const modal = Modal(trashContent);
+      const actionBtn = target.closest("button");
+      const tableRow = actionBtn.closest("tr");
+      const quoteId = tableRow.firstElementChild.textContent;
 
-      if (button.classList.contains("quote-manager__table-edit")) {
+      if (actionBtn.classList.contains("quote-manager__table-edit")) {
         // Open Modal
-      } else if (button.classList.contains("quote-manager__table-trash")) {
+        console.log(quoteId);
+      } else if (actionBtn.classList.contains("quote-manager__table-trash")) {
         // Open Modal
-        modal.openModal();
+        console.log(quoteId);
       }
     });
   };
-
-  function createTrashModalContent() {
-    // header
-    const headerFragment = document.createDocumentFragment();
-    const headerMessage = document.createElement("p");
-
-    headerMessage.textContent = `Are you sure want to move this Quote to your Trash?`;
-    headerFragment.appendChild(headerMessage);
-
-    // body
-    const bodyFragment = document.createDocumentFragment();
-    const trashMessage = document.createElement("p");
-
-    trashMessage.textContent = `You are about to Trash quote_id: ${""}`;
-    bodyFragment.appendChild(trashMessage);
-
-    // footer
-    const footerFragment = document.createDocumentFragment();
-    const trashBtn = document.createElement("button");
-
-    trashBtn.type = "button";
-    trashBtn.classList.add("confirm-delete");
-    footerFragment.appendChild(trashBtn);
-
-    return { headerFragment, bodyFragment, footerFragment };
-  }
 
   return { init };
 }
