@@ -36,10 +36,12 @@ export function TableController() {
         const selectedQuote = updatedDb
           .getLocalQuoteRecord()
           .find((quote) => quote.id === quoteId); // So, I am fetching a new updated record.
+
         const modalRequest = {
           purpose: "toTrash",
-          payload: selectedQuote,
+          dataToRender: selectedQuote,
         };
+
         // Open Modal
         modal.open(modalRequest);
       }

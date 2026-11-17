@@ -10,9 +10,14 @@ export const modal = (() => {
   const modalContent = modalDom.modalContent;
 
   let _isOpen = false;
+  let _openPurpose = null;
+  let _currentData = null;
+
+  const getCurrentData = () => _currentData;
+  const getOpenPurpose = () => _openPurpose;
 
   // Expects an Object
-  function open({ purpose, payload } = {}) {
+  function open({ purpose, dataToRender } = {}) {
     if (_isOpen) {
       close();
     }
@@ -26,10 +31,13 @@ export const modal = (() => {
         break;
 
       case "toTrash":
-        modalContent.append(createTrashUI(payload));
+        modalContent.append(createTrashUI(dataToRender));
+        _openPurpose = "toTrash";
+        _currentData = dataToRender;
         break;
 
       case "toViewTrash":
+        // expects dataToRender as an array of quotes
         // modalContent.append();
         break;
     }
@@ -45,6 +53,8 @@ export const modal = (() => {
 
     modalBackdrop.style.display = "none";
     modalContent.replaceChildren(); // As per AI, the new modern way
+    _currentData = null;
+    _openPurpose = null;
     htmlBody.classList.remove("modal--open"); // Removes scroll lock
 
     if (htmlBody.classList.length === 0) {
@@ -103,5 +113,5 @@ export const modal = (() => {
   // UI for list of Trashed Quotes
   function createTrashFolderUI() {}
 
-  return { open, close };
+  return { open, close, getCurrentData, getOpenPurpose };
 })();
