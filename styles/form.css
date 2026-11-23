@@ -1,0 +1,25 @@
+.form-container {
+  padding: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.form__control {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__control input {
+  padding-block: 1rem;
+  border-bottom: 2px solid var(--black-primary);
+}
+
+.form__submit-btn {
+  padding: 1rem 2rem;
+  background-color: var(--pink-primary);
+  color: var(--white-primary);
+}

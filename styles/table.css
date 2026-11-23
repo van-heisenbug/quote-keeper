@@ -1,0 +1,22 @@
+.table-container {
+  padding: 2rem;
+}
+
+.quote-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.quote-table thead {
+  background-color: var(--pink-primary);
+  color: var(--white-primary);
+}
+
+.quote-table thead th {
+  padding: 1rem;
+}
+
+.quote-table tbody td {
+  border-bottom: 1px solid var(--black-primary);
+  padding-block: 1rem;
+}

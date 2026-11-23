@@ -1,0 +1,15 @@
+.random-quote-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.random-quote {
+  font-style: italic;
+}
+
+.random-quote__btn {
+  padding: 1rem 2rem;
+  background-color: var(--black-primary);
+  color: var(--white-primary);
+}
